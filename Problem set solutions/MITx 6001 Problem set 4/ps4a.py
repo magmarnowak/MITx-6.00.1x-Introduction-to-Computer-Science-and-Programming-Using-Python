@@ -198,12 +198,7 @@ def calculateHandlen(hand):
     hand: dictionary (string-> int)
     returns: integer
     """
-    result = 0
-    for x in hand:
-        result += hand[x]
-    return result
-
-
+    return sum(hand.values())
 
 def playHand(hand, wordList, n):
     """
