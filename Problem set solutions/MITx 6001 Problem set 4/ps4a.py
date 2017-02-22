@@ -2,6 +2,7 @@
 
 import random
 import string
+from copy import copy
 
 VOWELS = 'aeiou'
 CONSONANTS = 'bcdfghjklmnpqrstvwxyz'
@@ -46,7 +47,7 @@ def getFrequencyDict(sequence):
     # freqs: dictionary (element_type -> int)
     freq = {}
     for x in sequence:
-        freq[x] = freq.get(x,0) + 1
+        freq[x] = freq.get(x,0) + 1 # this increases the value (int, frequency) by 1 or sets it to 1 if value is not set for x (str, letter)
     return freq
 
 
@@ -97,9 +98,9 @@ def displayHand(hand):
 
     hand: dictionary (string -> int)
     """
-    for letter in hand.keys():
-        for j in range(hand[letter]):
-             print(letter,end=" ")       # print all on the same line
+    for letter in hand.keys(): # iterates trough letters in the word
+        for j in range(hand[letter]): # takes values of the key as range
+             print(letter,end=" ")       # print all on the same line, end=" " works like a trailing comma - it ends the line with a space instead of a line break
     print()                             # print an empty line
 
 #
@@ -107,7 +108,7 @@ def displayHand(hand):
 #
 def dealHand(n):
     """
-    Returns a random hand containing n lowercase letters.
+    Returns a random hand as a dictionary containing n lowercase letters.
     At least n/3 the letters in the hand should be VOWELS.
 
     Hands are represented as dictionaries. The keys are
@@ -120,8 +121,8 @@ def dealHand(n):
     hand={}
     numVowels = n // 3
 
-    for i in range(numVowels):
-        x = VOWELS[random.randrange(0,len(VOWELS))]
+    for i in range(numVowels): # iterator in the range from 0 to the number of letters in a hand
+        x = VOWELS[random.randrange(0,len(VOWELS))] # == random.randint(0, len(VOWELS)+1)
         hand[x] = hand.get(x, 0) + 1
 
     for i in range(numVowels, n):
@@ -149,8 +150,13 @@ def updateHand(hand, word):
     hand: dictionary (string -> int)
     returns: dictionary (string -> int)
     """
-    # TO DO ... <-- Remove this comment when you code this function
-
+    newHand = hand.copy()
+    for x in word:
+        if newHand[x] > 0:
+            newHand[x] -= 1
+        else:
+            del newHand[x]
+    return newHand
 
 
 #
