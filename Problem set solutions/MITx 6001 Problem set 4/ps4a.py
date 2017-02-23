@@ -237,6 +237,7 @@ def playHand(hand, wordList, n):
         # If the input is a single period:
         if word == ".":
             # End the game (break out of the loop)
+            print("Goodbye!", end = " ")
             break
         # Otherwise (the input is not a single period):
         else:
@@ -292,10 +293,7 @@ def playGame(wordList):
         else:
             print("Invalid command.")
             return playGame(wordList)
-        return playGame(wordList) # how to get it to run again after a hand is finished?
-
-
-
+        # how to get it to run again after a hand is finished?
 
 
 
