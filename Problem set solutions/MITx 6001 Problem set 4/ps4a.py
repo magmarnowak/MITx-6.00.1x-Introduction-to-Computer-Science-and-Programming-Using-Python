@@ -247,13 +247,13 @@ def playHand(hand, wordList, n):
             else:
                 totalScore += getWordScore(word, n)
                 # Tell the user how many points the word earned, and the updated total score, in one line followed by a blank line
-                print("\"%s\" earned %d points. Total: %d" % (word, getWordScore(word, n), totalScore))
+                print("\"%s\" earned %d points. Total: %d\n" % (word, getWordScore(word, n), totalScore))
                 # Update the hand
                 hand = updateHand(hand, word)
     # Game is over (user entered a '.' or ran out of letters), so tell user the total score
     else:
         print("\nRun out of letters.", end = " ")
-    print("Total score: %d points" % totalScore)
+    print("Total score: %d points\n" % totalScore)
 
 #
 # Problem #5: Playing a game
@@ -277,7 +277,7 @@ def playGame(wordList):
         userInput = input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
         if userInput in ['n', 'r', 'e']:
             if userInput == 'r' and handsCounter == 0:
-                print("You have not played a hand yet. Please play a new hand first!")
+                print("You have not played a hand yet. Please play a new hand first!\n")
                 playGame(wordList)
             elif userInput == "r" and handsCounter > 0:
                 handsCounter += 1
