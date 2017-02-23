@@ -3,7 +3,6 @@
 import random
 import string
 from copy import copy
-from sys import exit
 
 VOWELS = 'aeiou'
 CONSONANTS = 'bcdfghjklmnpqrstvwxyz'
@@ -288,7 +287,7 @@ def playGame(wordList):
                 hand = dealHand(HAND_SIZE)
                 playHand(hand, wordList, HAND_SIZE)
             elif userInput == "e":
-                return exit(0)
+                return
         else:
             print("Invalid command.")
             playGame(wordList)
