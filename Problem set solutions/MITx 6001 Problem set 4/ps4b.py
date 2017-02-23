@@ -131,28 +131,24 @@ def playGame(wordList):
             return
         elif userInput not in ['n', 'r', 'e']:
             print("Invalid command.")
+        elif userInput == 'r' and handsCounter == 0:
+            print("You have not played a hand yet. Please play a new hand first!\n")
         else:
             playerChoice = input("\nEnter u to have yourself play, c to have the computer play: ")
             if playerChoice == 'u':
-                if userInput == 'r' and handsCounter == 0:
-                    print("You have not played a hand yet. Please play a new hand first!\n")
-                elif userInput == "r" and handsCounter > 0:
+                if userInput == "r" and handsCounter > 0:
                     handsCounter += 1
-                    playHand(hand, wordList, HAND_SIZE)
                 elif userInput == 'n':
                     handsCounter += 1
                     hand = dealHand(HAND_SIZE)
-                    playHand(hand, wordList, HAND_SIZE)
+                playHand(hand, wordList, HAND_SIZE)
             elif playerChoice == 'c':
-                if userInput == 'r' and handsCounter == 0:
-                    print("You have not played a hand yet. Please play a new hand first!\n")
-                elif userInput == "r" and handsCounter > 0:
+                if userInput == "r" and handsCounter > 0:
                     handsCounter += 1
-                    compPlayHand(hand, wordList, HAND_SIZE)
                 elif userInput == 'n':
                     handsCounter += 1
                     hand = dealHand(HAND_SIZE)
-                    compPlayHand(hand, wordList, HAND_SIZE)
+                compPlayHand(hand, wordList, HAND_SIZE)
             else:
                 while playerChoice not in ['u', 'c']:
                     print("Invalid command.")
