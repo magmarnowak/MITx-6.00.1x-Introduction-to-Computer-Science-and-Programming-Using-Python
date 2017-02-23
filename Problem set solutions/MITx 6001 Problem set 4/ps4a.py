@@ -278,7 +278,6 @@ def playGame(wordList):
         if userInput in ['n', 'r', 'e']:
             if userInput == 'r' and handsCounter == 0:
                 print("You have not played a hand yet. Please play a new hand first!\n")
-                playGame(wordList)
             elif userInput == "r" and handsCounter > 0:
                 handsCounter += 1
                 playHand(hand, wordList, HAND_SIZE)
@@ -290,7 +289,6 @@ def playGame(wordList):
                 return
         else:
             print("Invalid command.")
-            playGame(wordList)
     return playGame(wordList)
 
 
