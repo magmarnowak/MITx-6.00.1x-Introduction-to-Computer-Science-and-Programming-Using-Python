@@ -274,26 +274,26 @@ def playGame(wordList):
     2) When done playing the hand, repeat from step 1
     """
     handsCounter = 0
-    userInput = input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
     gameOn = True
     while gameOn:
+        userInput = input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
         if userInput in ['n', 'r', 'e']:
             if userInput == 'r' and handsCounter == 0:
                 print("You have not played a hand yet. Please play a new hand first!")
-                return playGame(wordList)
+                playGame(wordList)
             elif userInput == "r" and handsCounter > 0:
                 handsCounter += 1
-                return playHand(hand, wordList, n)
+                playHand(hand, wordList, n)
             elif userInput == 'n':
                 handsCounter += 1
                 hand = dealHand(n)
-                return playHand(hand, wordList, n)
+                playHand(hand, wordList, n)
             elif userInput == "e":
                 return exit(0)
         else:
             print("Invalid command.")
-            return playGame(wordList)
-        # how to get it to run again after a hand is finished?
+            playGame(wordList)
+    return playGame(wordList)
 
 
 
