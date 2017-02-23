@@ -3,10 +3,12 @@
 import random
 import string
 from copy import copy
+from sys import exit
 
 VOWELS = 'aeiou'
 CONSONANTS = 'bcdfghjklmnpqrstvwxyz'
 HAND_SIZE = 7
+n = HAND_SIZE
 
 SCRABBLE_LETTER_VALUES = {
     'a': 1, 'b': 3, 'c': 3, 'd': 2, 'e': 1, 'f': 4, 'g': 2, 'h': 4, 'i': 1, 'j': 8, 'k': 5, 'l': 1, 'm': 3, 'n': 1, 'o': 1, 'p': 3, 'q': 10, 'r': 1, 's': 1, 't': 1, 'u': 1, 'v': 4, 'w': 4, 'x': 8, 'y': 4, 'z': 10
@@ -270,8 +272,29 @@ def playGame(wordList):
 
     2) When done playing the hand, repeat from step 1
     """
-    # TO DO ... <-- Remove this comment when you code this function
-    print("playGame not yet implemented.") # <-- Remove this line when you code the function
+    handsCounter = 0
+    userInput = input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+    gameOn = True
+    while gameOn:
+        if userInput in ['n', 'r', 'e']:
+            if userInput == 'r' and handsCounter == 0:
+                print("You have not played a hand yet. Please play a new hand first!")
+                return playGame(wordList)
+            elif userInput == "r" and handsCounter > 0:
+                handsCounter += 1
+                return playHand(hand, wordList, n)
+            elif userInput == 'n':
+                handsCounter += 1
+                hand = dealHand(n)
+                return playHand(hand, wordList, n)
+            elif userInput == "e":
+                return exit(0)
+        else:
+            print("Invalid command.")
+            return playGame(wordList)
+        return playGame(wordList) # how to get it to run again after a hand is finished?
+
+
 
 
 
