@@ -149,6 +149,7 @@ def playGame(wordList):
                     handsCounter += 1
                     hand = dealHand(HAND_SIZE)
                 compPlayHand(hand, wordList, HAND_SIZE)
+            # still need to debug the below as it makes the computer play even if 'u' input.
             else:
                 while playerChoice not in ['u', 'c']:
                     print("Invalid command.")
