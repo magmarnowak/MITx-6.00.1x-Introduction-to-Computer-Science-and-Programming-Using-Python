@@ -235,7 +235,6 @@ def playHand(hand, wordList, n):
         # If the input is a single period:
         if word == ".":
             # End the game (break out of the loop)
-            print("Goodbye!", end = " ")
             break
         # Otherwise (the input is not a single period):
         else:
@@ -284,6 +283,7 @@ def playGame(wordList):
             hand = dealHand(HAND_SIZE)
             playHand(hand, wordList, HAND_SIZE)
         elif userInput == "e":
+            print("OK, goodbye!")
             return
         else:
             print("Invalid command.")
