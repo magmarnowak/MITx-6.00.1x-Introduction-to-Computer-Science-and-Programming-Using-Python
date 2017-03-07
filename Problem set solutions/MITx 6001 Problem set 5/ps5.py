@@ -102,7 +102,7 @@ class Message(object):
         Returns: a dictionary mapping a letter (string) to
                  another letter (string).
         '''
-        # self.shift = shift
+        self.shift = shift
         self.alpha_lower = string.ascii_lowercase
         self.alpha_upper = string.ascii_uppercase
         self.encrypting_dict = {}
